@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Contenedor principal con la imagen de fondo -->
+<div class="image-background" style="background-image: url('{% static 'img/cocina-landing.jpg' %}');">
+    <!-- Contenido centrado en el medio de la imagen -->
+    <div class="image-content">
+        <h1>Bienvenido a LocalEats</h1>
+        <p>Conecta con amas de casa que ofrecen comida casera y deliciosa, cerca de ti.</p>
+        <a href="#" class="btn">Explorar Platillos</a>
+    </div>
+</div>
+{% endblock %}
