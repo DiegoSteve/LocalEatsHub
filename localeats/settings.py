@@ -43,6 +43,7 @@ CUSTOM_APPS = [
     "landing",
     "dishes",
     "chefs",
+    "users",
 ]
 
 THIRD_PARTY_APPS = []
@@ -114,13 +115,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
+AUTH_USER_MODEL = "users.User"
+AUTHENTICATION_BACKENDS = ["users.backends.EmailBackend"]
 
 USE_TZ = True
+TIME_ZONE = "America/Mexico_City"
+
+
+LANGUAGE_CODE = "en-us"
+
+USE_I18N = True
 
 
 # Static files (CSS, JavaScript, Images)
