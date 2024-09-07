@@ -12,17 +12,23 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
+env = environ.Env(
+    # set casting, default value
+    DJANGO_DEBUG=(bool, False)
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-c(@xtc8cmrkil7i&z&or2_b$wotd+4=cbjx28y-42!ondz)d09"
-
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -42,8 +48,8 @@ DJANGO_APPS = [
 CUSTOM_APPS = [
     "landing",
     "dishes",
-    "chefs",
     "users",
+    "restaurants",
 ]
 
 THIRD_PARTY_APPS = []
@@ -87,11 +93,14 @@ WSGI_APPLICATION = "localeats.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": str(os.environ.get("DB_NAME")),
+        "USER": str(os.environ.get("DB_USER")),
+        "PASSWORD": str(os.environ.get("DB_PASSWORD")),
+        "HOST": str(os.environ.get("DB_HOST")),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -132,6 +141,8 @@ USE_I18N = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
