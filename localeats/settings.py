@@ -50,6 +50,7 @@ CUSTOM_APPS = [
     "dishes",
     "users",
     "restaurants",
+    "students",
 ]
 
 THIRD_PARTY_APPS = []
