@@ -10,7 +10,8 @@ mig:
 
 delmig:
 		rm -rf ./users/migrations/00*.py
-		rm -rf ./chefs/migrations/00*.py
+		rm -rf ./students/migrations/00*.py
+		rm -rf ./restaurants/migrations/00*.py
 		rm -rf ./dishes/migrations/00*.py
 		rm -rf ./landing/migrations/00*.py
 		

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block scripts %}
+    <script src="{% static 'css/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block title %}Users registration{% endblock title %}
 {% block content %}
 
 <!-- Contenedor principal con la imagen de fondo -->

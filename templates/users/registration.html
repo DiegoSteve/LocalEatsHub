@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h4>Registro de Usuarios</h4>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div>
+    <div>
+        {{ form.username }}
+    </div>
+    <div>
+        {{ form.email }}
+    </div>
+    <div>
+        {{ form.password }}
+    </div>
+    <div>
+        {{ form.user_type }}
+    </div>
+</div>
+    <button type="submit">Send</button>  
+</form>
+{% endblock %}

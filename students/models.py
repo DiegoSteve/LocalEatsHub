@@ -4,7 +4,7 @@ from users.models import User
 
 # Create your models here.
 class Student(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="students")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="students")
     name = models.CharField(max_length=150, unique=True)
     phone = models.CharField(max_length=12, unique=True)
     address = models.CharField(max_length=200)
