@@ -1,13 +1,13 @@
 from django.db import models
-from users.models import User
+from users.models import CustomUser
 
 
 # Create your models here.
 class Restaurant(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="restaurants"
+        CustomUser, on_delete=models.CASCADE, related_name="restaurants"
     )
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
     photo = models.ImageField(upload_to="restaurants/", default="restaurant_avatar.png")
     address = models.CharField(max_length=255)
     latitud = models.CharField(max_length=50, blank=True, null=True)

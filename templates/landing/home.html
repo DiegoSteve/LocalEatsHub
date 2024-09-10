@@ -6,7 +6,18 @@
 {% block title %}Users registration{% endblock title %}
 {% block content %}
 
+{% if messages %}
+    {% for message in messages %}
+        {% if 'info' in message.tags %}
+            {{ message }}
+        {% elif 'error' in message.tags %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 <!-- Contenedor principal con la imagen de fondo -->
+
 <div class="image-background" style="background-image: url('{% static 'img/cocina-landing.jpg' %}');">
     <!-- Contenido centrado en el medio de la imagen -->
     <div class="image-content">

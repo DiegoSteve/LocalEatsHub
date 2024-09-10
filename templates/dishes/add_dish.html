@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h4>Agregar un platillo</h4>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div>
+        <div>
+            {{ form.restaurant }}
+        </div>    
+    <div>
+        {{ form.name }}
+    </div>
+    <div>
+        {{ form.description }}
+    </div>
+    <div>
+        {{ form.price }}
+    </div>
+    <div>
+        {{ form.category }}
+    </div>
+    <div>
+        {{ form.photo }}
+    </div>
+    <div>
+        {{ form.aviability }}
+    </div>
+</div>
+    <button type="submit">Send</button>  
+</form>
+{% endblock %}

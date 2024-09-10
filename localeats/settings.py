@@ -125,7 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-AUTH_USER_MODEL = "users.User"
+LOGIN_REDIRECT_URL = "landing:home"
+AUTH_USER_MODEL = "users.CustomUser"
 AUTHENTICATION_BACKENDS = ["users.backends.EmailBackend"]
 
 USE_TZ = True
