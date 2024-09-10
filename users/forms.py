@@ -1,6 +1,8 @@
 from django import forms
 from .models import CustomUser
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+import re
+from django.core.exceptions import ValidationError
 
 
 class RegistrationForm(forms.ModelForm):
@@ -51,6 +53,32 @@ class RegistrationForm(forms.ModelForm):
             "is_active",
             "date_joined",
         ]
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+
+        if CustomUser.objects.filter(username=username).exists():
+            raise forms.ValidationError("El username ya se encuentra en uso")
+        return username
+
+    def clean_password(self):
+        password = self.cleaned_data.get("password")
+        if not re.findall("[A-Z]", password):
+            raise ValidationError("Debe contener al menos una letra Mayúscula")
+        if not re.findall("[a-z]", password):
+            raise ValidationError("Debe contener al menos una letra minúscula")
+        if not re.findall("[0-9]", password):
+            raise ValidationError("Debe contener al menos un dígito numérico")
+        if not len(password) >= 8:
+            raise ValidationError("Requiere ocho caracteres como mínimo")
+        return password
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError("El email ya se encuentra en uso")
+        return email
 
     def save(self, commit=True):
         user = super().save(commit=False)

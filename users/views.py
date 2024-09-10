@@ -16,6 +16,10 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("landing:home")  # Redirect after successful registration
+        else:
+            for field in form.errors:
+                for error in form.errors[field]:
+                    messages.error(request, f"{field}:{error}")
     else:
         form = RegistrationForm
 

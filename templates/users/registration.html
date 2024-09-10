@@ -2,6 +2,16 @@
 {% load static %}
 {% block content %}
 <h4>Registro de Usuarios</h4>
+{% if messages %}
+    {% for message in messages %}
+        {% if 'info' in message.tags %}
+            {{ message }}
+        {% elif 'error' in message.tags %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 <form action="" method="POST">
     {% csrf_token %}
     <div>
