@@ -15,7 +15,7 @@ def restaurant_update_view(request, pk):
         messages.add_message(
             request,
             messages.INFO,
-            "Resulta que no eres restaurantero",
+            "Resulta que eres Estudiante",
         )
         return redirect("landing:home")
 

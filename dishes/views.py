@@ -1,8 +1,10 @@
 from django.views.generic.edit import CreateView
+from django.shortcuts import get_object_or_404
 from .models import Dish
 from .forms import DishForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from restaurants.models import Restaurant
 
 # Create your views here.
 
@@ -20,4 +22,13 @@ class DishCreateView(LoginRequiredMixin, CreateView):
     def get_form_kwargs(self):
         kwargs = super(DishCreateView, self).get_form_kwargs()
         kwargs["user"] = self.request.user
+        print("USER: ", kwargs["user"])
         return kwargs
+
+    def form_valid(self, form):
+        restaurant = form.cleaned_data.get("restaurant")
+        print("Restaurant: ", restaurant)
+        form.instance.restaurant = restaurant
+        form.instance.user = self.request.user
+        self.object = form.save()
+        return super().form_valid(form)
