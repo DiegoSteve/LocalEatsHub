@@ -5,7 +5,15 @@
 {% endblock scripts %}
 {% block title %}Users registration{% endblock title %}
 {% block content %}
-
+{% if user.is_authenticated %}
+    {% if user.is_restaurant %}
+        {{ user.username }} -|- Es dueño de restaurant
+    {% elif user.is_student  %}
+        {{ user.username }} -|- Es Estudiante
+    {% else %}
+    {{ user.username }} -|- Es administrador
+    {% endif %}
+{% endif %}
 {% if messages %}
     {% for message in messages %}
         {% if 'info' in message.tags %}

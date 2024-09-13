@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h4>Agregar información del restaurant</h4>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <div>
+            {{ form.as_p }}
+        </div>    
+    </div>
+    <button type="submit">Send</button>  
+</form>
+{% endblock %}

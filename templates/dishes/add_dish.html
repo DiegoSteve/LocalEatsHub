@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <h4>Agregar un platillo</h4>
-<form action="" method="POST">
+<form action="" method="post", enctype="multipart/form-data">
     {% csrf_token %}
     <div>
         <div>
@@ -24,7 +24,7 @@
         {{ form.photo }}
     </div>
     <div>
-        {{ form.aviability }}
+        {{ form.availability }}
     </div>
 </div>
     <button type="submit">Send</button>  
