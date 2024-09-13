@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block scripts %}
-    <script src="{% static 'css/main.js' %}" defer></script>
+<script src="{% static 'css/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block title %}Users registration{% endblock title %}
 {% block content %}
@@ -16,14 +16,23 @@
     {% endfor %}
 {% endif %}
 
-<!-- Contenedor principal con la imagen de fondo -->
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <h2 class="navbar-title">LocalEats</h2>
+    </div>
+    <div class="navbar-right">
+        <a href="{% url 'users:register' %}" class="btn-login">Iniciar Sesión</a>
+    </div>
+</nav>
 
+<!-- Contenedor principal con la imagen de fondo -->
 <div class="image-background" style="background-image: url('{% static 'img/cocina-landing.jpg' %}');">
-    <!-- Contenido centrado en el medio de la imagen -->
-    <div class="image-content">
-        <h1>Bienvenido a LocalEats</h1>
-        <p>Conecta con amas de casa que ofrecen comida casera y deliciosa, cerca de ti.</p>
-        <a href="#" class="btn">Explorar Platillos</a>
+    <!-- Contenedor del buscador -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Buscar comida cerca de ti...">
+        <button class="search-button">Buscar Comida</button>
     </div>
 </div>
 {% endblock %}
+
