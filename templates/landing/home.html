@@ -14,26 +14,10 @@
     {{ user.username }} -|- Es administrador
     {% endif %}
 {% endif %}
-{% if messages %}
-    {% for message in messages %}
-        {% if 'info' in message.tags %}
-            {{ message }}
-        {% elif 'error' in message.tags %}
-            {{ message }}
-        {% endif %}
-    {% endfor %}
-{% endif %}
 
+{% include 'components/messages_.html' %}
 <!-- Navbar -->
-<nav class="navbar">
-    <div class="navbar-left">
-        <h2 class="navbar-title">LocalEats</h2>
-    </div>
-    <div class="navbar-right">
-        <a href="{% url 'users:register' %}" class="btn-login">Iniciar Sesión</a>
-    </div>
-</nav>
-
+{% include 'components/navbar_.html' %}
 <!-- Contenedor principal con la imagen de fondo -->
 <div class="image-background" style="background-image: url('{% static 'img/cocina-landing.jpg' %}');">
     <!-- Contenedor del buscador -->

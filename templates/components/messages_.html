@@ -1,0 +1,9 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if 'info' in message.tags %}
+            {{ message }}
+        {% elif 'error' in message.tags %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
