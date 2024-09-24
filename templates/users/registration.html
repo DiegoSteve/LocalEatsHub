@@ -3,6 +3,7 @@
 {% block content %}
 <div class="register-container">
     <h4>Registro de Usuarios</h4>
+    {% include 'components/messages_.html' %}
     <form action="" method="POST" class="register-form">
         {% csrf_token %}
         <div class="form-group">
